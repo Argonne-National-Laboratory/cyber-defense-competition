@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_PYOPC
+    bool "python-pyopc"
+    help
+        Python PyOPC Library to to communicate the OPC protocol
+
+        http://pyopc.sourceforge.net/

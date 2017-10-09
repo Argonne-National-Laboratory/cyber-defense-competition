@@ -1,0 +1,23 @@
+#!/bin/bash
+QEMU_IMG=${BASE_DIR}/images/opc.img
+
+echo -e "\n\n\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\nThis script does absolutely no error checking, exit now if you care about anything...\n\n\n--------------------------\n\n\n"
+sleep 5
+echo "Become root plz"
+sudo mkdir -p /mnt/{fs,root}
+qemu-img create $QEMU_IMG 120M
+/sbin/parted -s $QEMU_IMG mklabel msdos
+/sbin/parted -s $QEMU_IMG mkpart primary 1 100%
+sudo kpartx -a $QEMU_IMG
+sleep 1
+sudo mkfs.ext4 /dev/mapper/loop0p1
+sudo mount /dev/mapper/loop0p1 /mnt/root
+sudo mount ${BASE_DIR}/images/rootfs.ext4 /mnt/fs
+sudo cp -R /mnt/fs/* /mnt/root/
+echo '(hd0) /dev/loop0' | sudo tee --append /mnt/root/boot/grub/device.map
+sudo grub-install --no-floppy --grub-mkdevicemap=/mnt/root/boot/grub/device.map --root-directory=/mnt/root /dev/loop0
+sudo umount /mnt/{fs,root}
+sudo rmdir /mnt/{fs,root}
+sudo kpartx -v -d /dev/loop0
+sudo losetup -d /dev/loop0
+qemu-img convert -f raw -O vmdk $QEMU_IMG ${BASE_DIR}/images/opc.vmdk

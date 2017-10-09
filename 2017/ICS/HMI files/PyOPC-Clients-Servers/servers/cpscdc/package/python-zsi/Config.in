@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_ZSI
+    bool "python-zsi"
+    help
+        Python ZSI
+
+        https://pypi.python.org/pypi/ZSI/

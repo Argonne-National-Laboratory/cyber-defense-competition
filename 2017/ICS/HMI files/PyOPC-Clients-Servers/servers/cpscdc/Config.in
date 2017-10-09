@@ -1,0 +1,2 @@
+source "$BR2_EXTERNAL/package/python-pyopc/Config.in"
+source "$BR2_EXTERNAL/package/python-zsi/Config.in"

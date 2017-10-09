@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# Start OPC server
+#
+ 
+ 
+start() {
+        echo -n "Starting backend OPC server..."
+        /var/opc/generator/generator.py &
+        echo "OK"
+}
+
+stop() {
+        echo -n "Stopping OPC Server"
+        kill -9 $(ps aux | grep 'generator.py' | awk '{print $1}') &> /dev/null
+        echo "OK"
+}
+restart() {
+        stop
+        start
+}
+ 
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart|reload)
+        restart
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+ 
+exit $?
