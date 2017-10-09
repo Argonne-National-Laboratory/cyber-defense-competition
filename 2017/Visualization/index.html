@@ -1,0 +1,173 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <script>window.temp = "";</script>
+</head>
+<style>
+/*body {
+  background-image: url("animations/circuitry.jpg");
+  background-repeat: repeat;
+}*/
+body {
+  font-family: "Roboto", "Sans";
+  font-size: .8em;
+}
+
+
+img {
+  width: 100px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 50px;
+}
+.graph {
+
+}
+td {
+  height: 200px;
+  vertical-align: bottom;
+  position: relative;
+  font-family: "Roboto", "Sans";
+  font-size: .7em;
+}
+
+.explode {
+  position: absolute;
+  z-index: 20;
+  left: 0px;
+  top: 1px;
+  display: none;
+}
+
+.green {
+  background: "#2e8b57";
+}
+
+.red {
+  background: "red";
+}
+
+.blue {
+  background: "steelblue";
+}
+</style>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.4/d3.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js" ></script>
+
+
+<center>
+
+  <table>
+    <tr><td style="height: auto;"><img style="padding: 0px;" src="animations/bars.png"></td><td>
+      White/Blue Traffic<br />
+      Red Traffic<br />
+      Green Traffic
+</td></tr></table>
+<table>
+  <tr>
+    <td id="td1">
+      <img src="Logos/dsu.png" />
+      <div><img class="explode" src="animations/explosion.gif" /></diV>
+      <div id="g1" class="graph"></div>
+    </td>
+    <td id="td2">
+      <img src="Logos/gs.png" />
+      <div><img class="explode" src="animations/explosion.gif" /></div>
+      <div id="g2" class="graph"></div>
+    </td>
+    <td id="td3">
+      <img src="Logos/it.png" />
+      <div><img class="explode" src="animations/explosion.gif" /></div>
+      <div id="g3" class="graph"></div>
+    </td>
+    <td id="td4">
+      <img src="Logos/iu.png" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g4" class="graph"></div>
+    </td>
+    <td id="td5">
+      <img src="Logos/isu.png" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g5" class="graph"></div>
+    </td>
+  </tr>
+  <tr>
+    <td id="td6">
+      <img src="Logos/jal.png" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g6"></div>
+    </td>
+    <td id="td7">
+      <img src="Logos/ksu.jpg" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g7" class="graph"></div>
+    </td>
+    <td id="td8">
+      <img src="Logos/lewis.gif" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g8" class="graph"></div>
+    </td>
+    <td id="td9">
+      <img src="Logos/sj.png" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g9" class="graph"></div></td>
+    <td id="td10">
+      <img src="Logos/SMU.png" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g10" class="graph"></div>
+    </td>
+  </tr>
+  <tr>
+    <td id="td11">
+      <img src="Logos/ucf.jpg" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g11" class="graph"></div>
+    </td>
+    <td id="td12">
+      <img src="Logos/UIC.png" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g12" class="graph"></div>
+    </td>
+    <td id="td13">
+      <img src="Logos/UIUC.png" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g13" class="graph"></div>
+    </td>
+    <td id="td14">
+      <img src="Logos/UNI.png" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g14" class="graph"></div></td>
+    <td id="td15">
+      <img src="Logos/wright.jpg" />
+      <img class="explode" src="animations/explosion.gif" />
+      <div id="g15" class="graph"></div>
+    </td>
+  </tr>
+</table>
+</center>
+<script src="js/util.js"> </script>
+<script>
+
+window.setTimeout(function() {
+  for (i=1; i<16; i++) {
+    teamGraph(i);
+  }
+}, 1000);
+window.setInterval(function() {
+  for (i=1; i < 16; i++) {
+    updateGraph(i);
+  };
+
+}, 3000);
+</script>
+<!-- <script src="js/jquerycanvas.js" ></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+<style>
+.canvasjs-chart-credit {
+  display: none;
+}
+</style>
+</body>
+</html>
